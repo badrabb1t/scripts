@@ -68,12 +68,3 @@ printf "\nUse \'ps -e | grep nmap\' to check scan status.\n"
 b=$(ps -e | grep nmap | wc -l)
 sleep 10
 printf="There are <$b> scans currently running"
-#while [ $b -gt 0 ]; do
-#  sleep 10
-#  printf=$b
-#  if [ $b -eq 0 ]; then
-#    output="\nIt worked!\n"
-#    printf "$bold$output$unbold"
-#  fi
-#done
-# END
