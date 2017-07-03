@@ -1,8 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/env python2
 # Companion tool for autonmap.sh
 # Enables quick listing of machines running specified port or protocol
 #
 # Usage: autonmap-parser.py <port or protocol>
+# @badrabb1t 
 
 import os
 import sys

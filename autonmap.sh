@@ -1,10 +1,11 @@
+#!/bin/bash
 # Automates nmap scans for hosts on the specified network range
 # Finds responding hosts, adds hostnames to /etc/hosts, makes directory for each, scans each with nmap 
 #
 # TODO: Option to disable modifying /etc/hosts
 # TODO: Option to use IPs instead of DNS lookup
 #
-# @badrabb1t 2017
+# @badrabb1t 
 
 bold="\e[1m"
 unbold="\e[0m"
