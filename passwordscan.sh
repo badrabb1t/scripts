@@ -14,10 +14,13 @@ fi
 printf $bold"Locating files...\n"$unbold
 
 # file extensions to search
-dotconfig=( $(find / -name *.config) )
-dotconf=( $(find / -name *.conf) )
-dotcnf=( $(find / -name *.cnf) )
-dotini=( $(find / -name *.ini) )
+dotconfig=( $(/usr/bin/find / -name *.config) )
+dotconf=( $(/usr/bin/find / -name *.conf) )
+dotcnf=( $(/usr/bin/find / -name *.cnf) )
+dotini=( $(/usr/bin/find / -name *.ini) )
+dotxml=( $(/usr/bin/find / -name *.xml) )
+dotclass=( $(/usr/bin/find / -name *.class) )
+dotjsp=( $(/usr/bin/find / -name *.jsp) )
 
 printf $bold"Parsing...\n"$unbold
 
@@ -68,6 +71,51 @@ done
 
 # loop to search .ini files
 for i in ${dotini[@]}; do
+  # read each file, ignore comment lines
+  cmd="cat $i | grep password | grep -v \# | grep -v '^;'";
+  grepresult=$(eval $cmd)
+
+  # only print results if file contained at least one instance of "password"
+  if [[ ! -z "$grepresult" ]]
+  then
+    printf "**$bold$i$unbold\n" >> passwordscan.out
+    printf "$grepresult\n" >> passwordscan.out
+    printf "\n" >> passwordscan.out
+  fi
+done
+
+# loop to search .xml files
+for i in ${dotxml[@]}; do
+  # read each file, ignore comment lines
+  cmd="cat $i | grep password | grep -v \# | grep -v '^;'";
+  grepresult=$(eval $cmd)
+
+  # only print results if file contained at least one instance of "password"
+  if [[ ! -z "$grepresult" ]]
+  then
+    printf "**$bold$i$unbold\n" >> passwordscan.out
+    printf "$grepresult\n" >> passwordscan.out
+    printf "\n" >> passwordscan.out
+  fi
+done
+
+# loop to search .class files
+for i in ${dotclass[@]}; do
+  # read each file, ignore comment lines
+  cmd="cat $i | grep password | grep -v \# | grep -v '^;'";
+  grepresult=$(eval $cmd)
+
+  # only print results if file contained at least one instance of "password"
+  if [[ ! -z "$grepresult" ]]
+  then
+    printf "**$bold$i$unbold\n" >> passwordscan.out
+    printf "$grepresult\n" >> passwordscan.out
+    printf "\n" >> passwordscan.out
+  fi
+done
+
+# loop to search .jsp files
+for i in ${dotjsp[@]}; do
   # read each file, ignore comment lines
   cmd="cat $i | grep password | grep -v \# | grep -v '^;'";
   grepresult=$(eval $cmd)
