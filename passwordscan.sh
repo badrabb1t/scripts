@@ -1,7 +1,7 @@
-# finds string "password" in all readable files ending in .config, .conf, .cnf and .ini
+# finds string "password" in all readable files ending in common config file extensions
 # outputs results to passwordscan.out
 #
-# @badrabb1t
+# 2017 @badrabb1t
 
 bold="\e[1m"
 unbold="\e[0m"
